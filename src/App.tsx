@@ -80,12 +80,24 @@ function App() {
           </div>
         </div>
 
-        {/* Tech Stack */}
         <div className="mb-10">
           <p className={`text-xs uppercase tracking-[0.3em] mb-6 ${muted}`}>03 / Tech Stack</p>
           <div className="border-t pt-6" style={{ borderColor: isDark ? '#ffffff15' : '#00000015' }}>
             <div className="flex flex-wrap gap-x-6 gap-y-2">
-              {['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Python', 'Git', 'HTML/CSS', 'JavaScript'].map((tech) => (
+              <p className='w-full text-sm uppercase tracking-[0.3em] ${muted}'>Frontend</p>
+              {['HTML', 'CSS', 'Tailwind CSS', 'Javascript', 'React(Vite)', 'Bootstrap',].map((tech) => (
+                <span key={tech} className={`text-sm ${muted}`}>{tech}</span>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 mt-4">
+              <p className='w-full text-sm uppercase tracking-[0.3em] ${muted}'>Backend and Database</p>
+              {['PHP', 'Laravel', 'MySQL', 'PostgreSQL'].map((tech) => (
+                <span key={tech} className={`text-sm ${muted}`}>{tech}</span>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 mt-4">
+              <p className='w-full text-sm uppercase tracking-[0.3em] ${muted}'>Tools and Framework</p>
+              {['GitHub', 'VS code', 'Figma', 'Git', 'Wordpress',].map((tech) => (
                 <span key={tech} className={`text-sm ${muted}`}>{tech}</span>
               ))}
             </div>
