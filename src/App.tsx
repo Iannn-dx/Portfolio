@@ -54,8 +54,8 @@ function App() {
               <p className={`text-sm mt-1 ${muted}`}>22 Year Old | Web Developer / IT Helpdesk Staff</p>
               {/* <p className={`text-sm mt-1 ${muted}`}> GitHub | Aspiring Web Developer</p> */}
               <div className="flex gap-3 mt-4 items-center">
-                <button className="px-5 py-2 rounded-lg font-medium text-sm transition-colors duration-300 cursor-pointer" style={{ backgroundColor: isDark ? '#1e1e30' : '#e0e0e0', color: isDark ? '#fff' : '#000' }}>View Resume</button>
-                <button className="px-5 py-2 rounded-lg font-medium text-sm transition-colors duration-300 cursor-pointer" style={{ backgroundColor: isDark ? '#1e1e30' : '#e0e0e0', color: isDark ? '#fff' : '#000' }}>Send Email</button>
+                <a href="/resume/TEVES_IAN_KHRISTOPHER_RESUME.pdf" target="_blank" rel="noopener noreferrer" className="px-5 py-2 rounded-lg font-medium text-sm transition-colors duration-300 cursor-pointer no-underline" style={{ backgroundColor: isDark ? '#1e1e30' : '#e0e0e0', color: isDark ? '#fff' : '#000' }}>View Resume</a>
+                <a href="mailto:tevesiankhristopher@gmail.com" className="px-5 py-2 rounded-lg font-medium text-sm transition-colors duration-300 cursor-pointer no-underline" style={{ backgroundColor: isDark ? '#1e1e30' : '#e0e0e0', color: isDark ? '#fff' : '#000' }}>Send Email</a>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@ function App() {
           <p className={`text-xs uppercase tracking-[0.3em] ${muted}`}>02 / Experience</p>
           <div className="border-t" style={{ borderColor: isDark ? '#ffffff15' : '#00000015' }}>
             {[
-              { role: 'IT Programmer / IT Staff', company: 'Cagayan Museum and Historical Research Center', year: 'Current'},
+              { role: 'IT Staff / IT Programmer', company: 'Cagayan Museum and Historical Research Center', year: 'Current'},
               { role: 'OJT Internship', company: 'Office Of Civil Defense', year: '2025-2026' },
               { role: 'Academic / Project Experience', company: 'Cagayan State University - Carig Campus', year: '2022-2026' },
               
@@ -154,10 +154,8 @@ function App() {
               </div>
               <div className="border-t" style={{ borderColor: isDark ? '#ffffff15' : '#00000015' }}>
                 {[
-                  { name: 'AWS Technical Certification', org: 'Amazon Web Services', year: '2024' },
-                  { name: 'AWS re/Post Programming Apprentice', org: 'Amazon Web Services', year: '2024' },
-                  { name: 'Web Development Fundamentals', org: 'freeCodeCamp', year: '2023' },
-                  { name: 'JavaScript Algorithms & Data Structures', org: 'freeCodeCamp', year: '2023' },
+                  { name: 'Introduction to Cybersecurity', org: 'CISCO Networking Academy', year: '2026' },
+                  { name: 'IT Customer Support Basics', org: 'CISCO Networking Academy', year: '2026' },
                 ].map((item, i) => (
                   <div key={i} className="py-5 border-b" style={{ borderColor: isDark ? '#ffffff10' : '#00000010' }}>
                     <div className="flex items-start gap-4">
