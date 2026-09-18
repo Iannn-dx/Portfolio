@@ -186,6 +186,84 @@ function App() {
 
           </div>
         </div>
+
+        {/* GitHub Activity */}
+        <div className="mb-10">
+          <p className={`text-xs uppercase tracking-[0.3em] mb-6 ${muted}`}>06 / GitHub Activity</p>
+          <div
+            className="p-6 rounded-xl border"
+            style={{
+              borderColor: isDark ? '#ffffff10' : '#00000010',
+              backgroundColor: isDark ? '#ffffff05' : '#00000005',
+            }}
+          >
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                <span className="font-medium text-sm">Iannn-dx</span>
+              </div>
+              <a
+                href="https://github.com/Iannn-dx"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`text-xs ${muted} hover:opacity-70 transition-opacity`}
+              >
+                View Profile
+              </a>
+            </div>
+
+            {/* Pinned Repos */}
+            <div className="mb-6">
+              <p className={`text-xs mb-3 ${muted}`}>Pinned Repositories</p>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {[
+                  { name: 'Credify', lang: 'Blade', desc: 'certifications' },
+                  { name: 'Power-Gym', lang: 'PHP', desc: 'Online Membership Profiling and Payment System' },
+                  { name: 'personal-portfolio', lang: 'JavaScript', desc: 'Portfolio website' },
+                  { name: 'ticketing-system', lang: 'Blade', desc: 'Ticketing system' },
+                  { name: 'react-app', lang: 'TypeScript', desc: 'React application' },
+                ].map((repo, i) => (
+                  <a
+                    key={i}
+                    href={`https://github.com/Iannn-dx/${repo.name}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block p-3 rounded-lg border transition-all duration-300 hover:translate-y-[-2px] no-underline"
+                    style={{
+                      borderColor: isDark ? '#ffffff10' : '#00000010',
+                      backgroundColor: isDark ? '#ffffff08' : '#00000008',
+                      color: isDark ? '#fff' : '#000',
+                    }}
+                  >
+                    <p className="font-medium text-xs truncate">{repo.name}</p>
+                    <p className={`text-[10px] mt-1 truncate ${muted}`}>{repo.desc}</p>
+                    <div className="flex items-center gap-1.5 mt-2">
+                      <span className="w-2 h-2 rounded-full" style={{ backgroundColor: repo.lang === 'PHP' ? '#4F5D95' : repo.lang === 'Blade' ? '#f7523f' : repo.lang === 'TypeScript' ? '#3178c6' : '#f1e05a' }} />
+                      <span className={`text-[10px] ${muted}`}>{repo.lang}</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-4 gap-4">
+              {[
+                { label: 'Repositories', value: '15' },
+                { label: 'Followers', value: '1' },
+                { label: 'Following', value: '0' },
+                { label: 'Stars', value: '0' },
+              ].map((stat, i) => (
+                <div key={i} className="text-center">
+                  <p className="text-lg font-bold">{stat.value}</p>
+                  <p className={`text-xs ${muted}`}>{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
