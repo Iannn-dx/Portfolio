@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, Sun, Moon } from "lucide-react";
 import AnimatedGridPattern from "./components/animatedGridPattern";
 
 const certificates = [
@@ -106,7 +106,7 @@ export default function Certificates({ isDark, setIsDark, onBack }: Certificates
           color: isDark ? "#fff" : "#000",
         }}
       >
-        {isDark ? "Light Mode" : "Dark Mode"}
+        {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
       </button>
 
       <div className="max-w-4xl mx-auto px-6 py-16">

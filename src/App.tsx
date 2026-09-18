@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Sun, Moon } from 'lucide-react'
 import AnimatedGridPattern from "./components/animatedGridPattern"
 import Projects from "./Projects"
 import Certificates from "./Certificates"
@@ -37,7 +38,7 @@ function App() {
         className="fixed top-4 right-4 z-50 px-4 py-2 rounded-lg font-semibold shadow-lg transition-colors duration-300 cursor-pointer text-sm"
         style={{ backgroundColor: isDark ? '#1e1e30' : '#e0e0e0', color: isDark ? '#fff' : '#000' }}
       >
-        {isDark ? 'Light Mode' : 'Dark Mode'}
+        {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
       </button>
 
       <div className="max-w-5xl mx-auto px-6 py-10">
@@ -97,25 +98,37 @@ function App() {
 
         <div className="mb-10">
           <p className={`text-xs uppercase tracking-[0.3em] mb-6 ${muted}`}>03 / Tech Stack</p>
-          <div className="border-t pt-6" style={{ borderColor: isDark ? '#ffffff15' : '#00000015' }}>
-            <div className="flex flex-wrap gap-x-6 gap-y-2">
-              <p className='w-full text-sm uppercase tracking-[0.3em] ${muted}'>Frontend</p>
-              {['HTML', 'CSS', 'Tailwind CSS', 'Javascript', 'React(Vite)', 'Bootstrap',].map((tech) => (
-                <span key={tech} className={`text-sm ${muted}`}>{tech}</span>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-x-6 gap-y-2 mt-4">
-              <p className='w-full text-sm uppercase tracking-[0.3em] ${muted}'>Backend and Database</p>
-              {['PHP', 'Laravel', 'MySQL', 'PostgreSQL'].map((tech) => (
-                <span key={tech} className={`text-sm ${muted}`}>{tech}</span>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-x-6 gap-y-2 mt-4">
-              <p className='w-full text-sm uppercase tracking-[0.3em] ${muted}'>Tools and Framework</p>
-              {['GitHub', 'VS code', 'Figma', 'Git', 'Wordpress',].map((tech) => (
-                <span key={tech} className={`text-sm ${muted}`}>{tech}</span>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[
+              { title: 'Frontend', items: ['HTML', 'CSS', 'Tailwind CSS', 'Javascript', 'React', 'Bootstrap'] },
+              { title: 'Backend & Database', items: ['PHP', 'Laravel', 'MySQL', 'PostgreSQL'] },
+              { title: 'Tools & Framework', items: ['GitHub', 'VS Code', 'Figma', 'Git', 'Wordpress'] },
+            ].map((cat, i) => (
+              <div
+                key={i}
+                className="p-5 rounded-xl border transition-all duration-300"
+                style={{
+                  borderColor: isDark ? '#ffffff10' : '#00000010',
+                  backgroundColor: isDark ? '#ffffff05' : '#00000005',
+                }}
+              >
+                <p className={`text-xs uppercase tracking-[0.2em] mb-4 ${muted}`}>{cat.title}</p>
+                <div className="flex flex-wrap gap-2">
+                  {cat.items.map((tech) => (
+                    <span
+                      key={tech}
+                      className="text-xs px-3 py-1 rounded-full"
+                      style={{
+                        backgroundColor: isDark ? '#ffffff10' : '#00000010',
+                        color: isDark ? '#ffffff80' : '#00000080',
+                      }}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
