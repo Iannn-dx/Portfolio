@@ -1,9 +1,30 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AnimatedGridPattern from "./components/animatedGridPattern"
-import viteLogo from "./assets/vite.svg"
+import Projects from "./Projects"
+import Certificates from "./Certificates"
 
 function App() {
   const [isDark, setIsDark] = useState(true)
+  const [page, setPage] = useState(window.location.pathname)
+
+  useEffect(() => {
+    const handleNav = () => setPage(window.location.pathname)
+    window.addEventListener("popstate", handleNav)
+    return () => window.removeEventListener("popstate", handleNav)
+  }, [])
+
+  const navigate = (path: string) => {
+    window.history.pushState({}, "", path)
+    setPage(path)
+  }
+
+  if (page === "/projects") {
+    return <Projects isDark={isDark} setIsDark={setIsDark} onBack={() => navigate("/")} />
+  }
+
+  if (page === "/certificates") {
+    return <Certificates isDark={isDark} setIsDark={setIsDark} onBack={() => navigate("/")} />
+  }
 
   const bg = isDark ? '#0f0f17' : '#ffffff'
   const muted = isDark ? 'text-gray-400' : 'text-gray-600'
@@ -20,7 +41,6 @@ function App() {
       </button>
 
       <div className="max-w-5xl mx-auto px-6 py-10">
-
           <div className="flex items-center gap-5 p-6 mb-6">
             <img
               src="profile.jpg"
@@ -30,20 +50,15 @@ function App() {
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-2xl font-bold">Ian Khristopher Teves</h1>
-                <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
               </div>
               <p className={`text-sm mt-1 ${muted}`}>22 Year Old | Web Developer / IT Helpdesk Staff</p>
               {/* <p className={`text-sm mt-1 ${muted}`}> GitHub | Aspiring Web Developer</p> */}
               <div className="flex gap-3 mt-4 items-center">
                 <button className="px-5 py-2 rounded-lg font-medium text-sm transition-colors duration-300 cursor-pointer" style={{ backgroundColor: isDark ? '#1e1e30' : '#e0e0e0', color: isDark ? '#fff' : '#000' }}>View Resume</button>
                 <button className="px-5 py-2 rounded-lg font-medium text-sm transition-colors duration-300 cursor-pointer" style={{ backgroundColor: isDark ? '#1e1e30' : '#e0e0e0', color: isDark ? '#fff' : '#000' }}>Send Email</button>
-                <img src={viteLogo} alt="Vite" className="h-5 ml-1" />
               </div>
             </div>
           </div>
-        {/* </div> */}
 
         <div className="mb-10">
           <p className={`text-xs uppercase tracking-[0.3em] ${muted}`}>01 / About</p>
@@ -61,8 +76,8 @@ function App() {
           <p className={`text-xs uppercase tracking-[0.3em] ${muted}`}>02 / Experience</p>
           <div className="border-t" style={{ borderColor: isDark ? '#ffffff15' : '#00000015' }}>
             {[
-              { role: 'IT Programmer / IT Staff', company: 'Cagayan Museum and Historical Research Center', year: '2026'},
-              { role: 'OJT Internship', company: 'Office Of Civil Defense', year: '2025' },
+              { role: 'IT Programmer / IT Staff', company: 'Cagayan Museum and Historical Research Center', year: 'Current'},
+              { role: 'OJT Internship', company: 'Office Of Civil Defense', year: '2025-2026' },
               { role: 'Academic / Project Experience', company: 'Cagayan State University - Carig Campus', year: '2022-2026' },
               
             ].map((item, i) => (
@@ -104,6 +119,62 @@ function App() {
           </div>
         </div>
 
+        <div className="mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+            <div>
+              <div className='flex justify-between'>
+                <p className={`text-xs uppercase tracking-[0.3em] ${muted}`}>04 / Projects</p>
+                <button onClick={() => navigate("/projects")} className={`text-xs uppercase tracking-[0.3em] ${muted}`}>View all</button>
+              </div>
+              <div className="border-t" style={{ borderColor: isDark ? '#ffffff15' : '#00000015' }}>
+                {[
+                  { name: ' Daily Administrative and Operational Report (DAOR) and Duty Checklist System', desc: 'Developed a web-based system to streamline daily administrative daily reporting.', tech: 'PHP, Javascript, HTML/CSS, Bootstrap, MySQL' },
+                  { name: 'Gym Membership and Payment Tracking system', desc: 'A web-based gym management system for handling member profiles, membership plans, payments, promotions, and reports.', tech: 'PHP, HTML/CSS, Javascript, Bootstrap, MySQL' },
+                  {name: 'Ticketing System (SerbisyoDesk)', desc: 'A web-based IT service desk and ticketing system for managing user concerns, technical issues, and service requests.', tech: 'Laravel/PHP, MySQL, TailwindCSS, Javascript'}
+                ].map((item, i) => (
+                  <div key={i} className="py-5 border-b" style={{ borderColor: isDark ? '#ffffff10' : '#00000010' }}>
+                    <div className="flex items-start gap-4">
+                      <span className="text-xs mt-1" style={{ color: '#6c63ff' }}>{String(i + 1).padStart(2, '0')}</span>
+                      <div>
+                        <p className="font-medium text-sm">{item.name}</p>
+                        <p className={`text-xs mt-1 ${muted}`}>{item.desc}</p>
+                        <p className={`text-xs mt-2 ${muted}`}>{item.tech}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className='flex justify-between items-center'>
+                <p className={`text-xs uppercase tracking-[0.3em] ${muted}`}>05 / Certificate</p>
+                <button onClick={() => navigate("/certificates")} className={`text-xs uppercase tracking-[0.3em] ${muted} hover:opacity-70 transition-opacity cursor-pointer`}>View all</button>
+              </div>
+              <div className="border-t" style={{ borderColor: isDark ? '#ffffff15' : '#00000015' }}>
+                {[
+                  { name: 'AWS Technical Certification', org: 'Amazon Web Services', year: '2024' },
+                  { name: 'AWS re/Post Programming Apprentice', org: 'Amazon Web Services', year: '2024' },
+                  { name: 'Web Development Fundamentals', org: 'freeCodeCamp', year: '2023' },
+                  { name: 'JavaScript Algorithms & Data Structures', org: 'freeCodeCamp', year: '2023' },
+                ].map((item, i) => (
+                  <div key={i} className="py-5 border-b" style={{ borderColor: isDark ? '#ffffff10' : '#00000010' }}>
+                    <div className="flex items-start gap-4">
+                      <span className="text-xs mt-1" style={{ color: '#6c63ff' }}>{String(i + 1).padStart(2, '0')}</span>
+                      <div className="flex-1">
+                        <p className="font-medium text-sm">{item.name}</p>
+                        <p className={`text-xs mt-0.5 ${muted}`}>{item.org}</p>
+                      </div>
+                      <span className={`text-xs ${muted}`}>{item.year}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   )
