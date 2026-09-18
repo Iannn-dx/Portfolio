@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
+import AnimatedGridPattern from "./components/animatedGridPattern";
 
 const projects = [
   {
@@ -85,9 +86,10 @@ export default function Projects({ isDark, setIsDark, onBack }: ProjectsProps) {
 
   return (
     <div
-      className="min-h-screen transition-colors duration-300"
+      className="relative min-h-screen transition-colors duration-300"
       style={{ backgroundColor: bg, color: isDark ? "#fff" : "#000" }}
     >
+      <AnimatedGridPattern />
       <button
         onClick={() => setIsDark(!isDark)}
         className="fixed top-4 right-4 z-50 px-4 py-2 rounded-lg font-semibold shadow-lg transition-colors duration-300 cursor-pointer text-sm"

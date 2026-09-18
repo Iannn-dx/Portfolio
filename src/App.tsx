@@ -30,7 +30,7 @@ function App() {
   const muted = isDark ? 'text-gray-400' : 'text-gray-600'
 
   return (
-    <div className="min-h-screen transition-colors duration-300" style={{ backgroundColor: bg, color: isDark ? '#fff' : '#000' }}>
+    <div className="relative min-h-screen transition-colors duration-300" style={{ backgroundColor: bg, color: isDark ? '#fff' : '#000' }}>
       <AnimatedGridPattern />
       <button
         onClick={() => setIsDark(!isDark)}

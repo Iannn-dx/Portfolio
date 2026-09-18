@@ -1,48 +1,71 @@
 import { useState } from "react";
 import { ArrowLeft, ExternalLink } from "lucide-react";
+import AnimatedGridPattern from "./components/animatedGridPattern";
 
 const certificates = [
   {
-    name: "AWS Technical Certification",
-    org: "Amazon Web Services",
-    year: "2024",
-    image: "/certs/aws-technical.png",
-    link: "#",
+    name: "Introduction to Cybersecurity",
+    org: "CISCO Networking Academy",
+    year: "2026",
+    image: "/certs/CyberSecurity.jpg",
+    link: "https://www.credly.com/badges/e6d1deed-e165-4bfc-bd41-219f27b36757/public_url",
+    status: "completed",
   },
   {
-    name: "AWS re/Post Programming Apprentice",
-    org: "Amazon Web Services",
-    year: "2024",
-    image: "/certs/aws-repost.png",
-    link: "#",
+    name: "IT Customer Support Basics",
+    org: "CISCO Networking Academy",
+    year: "2026",
+    image: "/certs/CustomerSupport.jpg",
+    link: "https://www.credly.com/badges/b9cb02b6-9323-4b97-adc1-151b10faa91b/public_url",
+    status: "completed",
   },
   {
-    name: "Web Development Fundamentals",
-    org: "freeCodeCamp",
-    year: "2023",
-    image: "/certs/freecodecamp-web.png",
+    name: "Prompt like an Engineer",
+    org: "CISCO Networking Academy",
+    year: "2026",
+    image: "/certs/prompt.jpg",
     link: "#",
+    status: "ongoing",
   },
   {
-    name: "JavaScript Algorithms & Data Structures",
-    org: "freeCodeCamp",
-    year: "2023",
-    image: "/certs/freecodecamp-js.png",
+    name: "Introduction to Modern AI",
+    org: "CISCO Networking Academy",
+    year: "2026",
+    image: "/certs/modernAI.jpg",
     link: "#",
+    status: "ongoing",
   },
   {
-    name: "Responsive Web Design",
-    org: "freeCodeCamp",
-    year: "2023",
-    image: "/certs/freecodecamp-rwd.png",
+    name: "Networking Basics",
+    org: "CISCO Networking Academy",
+    year: "2026",
+    image: "/certs/networking.jpg",
     link: "#",
+    status: "pursuing",
   },
   {
-    name: "Git & GitHub Fundamentals",
-    org: "Coursera",
-    year: "2023",
-    image: "/certs/coursera-git.png",
+    name: "AI Fundamentals",
+    org: "Coursera - Google",
+    year: "2026",
+    image: "/certs/AIfundamentals.jpg",
     link: "#",
+    status: "pursuing",
+  },
+    {
+    name: "Introduction to AI",
+    org: "Coursera - Google",
+    year: "2026",
+    image: "/certs/introAI.jpg",
+    link: "#",
+    status: "pursuing",
+  },
+      {
+    name: "Google AI Essentials Specialization",
+    org: "Coursera - Google",
+    year: "2026",
+    image: "/certs/AIEssential.jpg",
+    link: "#",
+    status: "pursuing",
   },
 ];
 
@@ -71,9 +94,10 @@ export default function Certificates({ isDark, setIsDark, onBack }: Certificates
 
   return (
     <div
-      className="min-h-screen transition-colors duration-300"
+      className="relative min-h-screen transition-colors duration-300"
       style={{ backgroundColor: bg, color: isDark ? "#fff" : "#000" }}
     >
+      <AnimatedGridPattern />
       <button
         onClick={() => setIsDark(!isDark)}
         className="fixed top-4 right-4 z-50 px-4 py-2 rounded-lg font-semibold shadow-lg transition-colors duration-300 cursor-pointer text-sm"
@@ -122,17 +146,50 @@ export default function Certificates({ isDark, setIsDark, onBack }: Certificates
                 color: isDark ? "#fff" : "#000",
               }}
             >
-              <div className="aspect-video w-full overflow-hidden" style={{ backgroundColor: isDark ? "#ffffff08" : "#00000008" }}>
-                <img
-                  src={cert.image}
-                  alt={cert.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+              <div className="aspect-video w-full overflow-hidden flex items-center justify-center" style={{ backgroundColor: isDark ? "#ffffff08" : "#00000008" }}>
+                {cert.image.endsWith(".pdf") ? (
+                  <object
+                    data={cert.image}
+                    type="application/pdf"
+                    className="w-full h-full"
+                  >
+                    <div className={`flex flex-col items-center justify-center h-full gap-2 ${muted}`}>
+                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                      <span className="text-xs">PDF Certificate</span>
+                    </div>
+                  </object>
+                ) : (
+                  <img
+                    src={cert.image}
+                    alt={cert.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = "none";
+                      (e.target as HTMLImageElement).nextElementSibling?.classList.remove("hidden");
+                    }}
+                  />
+                )}
+                {!cert.image.endsWith(".pdf") && (
+                  <div className={`hidden flex-col items-center justify-center h-full gap-2 ${muted}`}>
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                    </svg>
+                    <span className="text-xs">Certificate</span>
+                  </div>
+                )}
               </div>
               <div className="p-4">
                 <div className="flex items-start justify-between mb-2">
                   <p className="font-medium text-sm">{cert.name}</p>
-                  <ExternalLink className={`w-3.5 h-3.5 mt-0.5 flex-shrink-0 ${muted}`} />
+                  {cert.status === "pursuing" ? (
+                    <span className="text-[10px] px-2 py-0.5 rounded-full flex-shrink-0 ml-2" style={{ backgroundColor: isDark ? "#fbbf2420" : "#f59e0b20", color: isDark ? "#fbbf24" : "#d97706" }}>
+                      In Progress
+                    </span>
+                  ) : (
+                    <ExternalLink className={`w-3.5 h-3.5 mt-0.5 flex-shrink-0 ${muted}`} />
+                  )}
                 </div>
                 <div className="flex items-center justify-between">
                   <p className={`text-xs ${muted}`}>{cert.org}</p>
