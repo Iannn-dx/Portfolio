@@ -169,6 +169,7 @@ function App() {
                 {[
                   { name: 'Introduction to Cybersecurity', org: 'CISCO Networking Academy', year: '2026' },
                   { name: 'IT Customer Support Basics', org: 'CISCO Networking Academy', year: '2026' },
+                  {name: 'AI Fundamentals: Foundations for Understanding AI', org: 'CISCO Networking Academy', year: '2026'}
                 ].map((item, i) => (
                   <div key={i} className="py-5 border-b" style={{ borderColor: isDark ? '#ffffff10' : '#00000010' }}>
                     <div className="flex items-start gap-4">
@@ -187,7 +188,6 @@ function App() {
           </div>
         </div>
 
-        {/* GitHub Activity */}
         <div className="mb-10">
           <p className={`text-xs uppercase tracking-[0.3em] mb-6 ${muted}`}>06 / GitHub Activity</p>
           <div
