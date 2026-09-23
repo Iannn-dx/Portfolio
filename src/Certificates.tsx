@@ -44,12 +44,12 @@ const certificates = [
     status: "pursuing",
   },
   {
-    name: "AI Fundamentals",
+    name: "AI Fundamentals: Foundations for Understanding AI",
     org: "CISCO Networking Academy",
     year: "2026",
     image: "/certs/aiFundamentals.jpg",
-    link: "#",
-    status: "pursuing",
+    link: "https://www.credly.com/badges/4c1f7436-1191-4430-b7a9-ff67b4b49ed8/public_url",
+    status: "completed",
   },
     {
     name: "Introduction to AI",
