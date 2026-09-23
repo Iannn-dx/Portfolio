@@ -19,6 +19,14 @@ const certificates = [
     link: "https://www.credly.com/badges/b9cb02b6-9323-4b97-adc1-151b10faa91b/public_url",
     status: "completed",
   },
+    {
+    name: "AI Fundamentals: Foundations for Understanding AI",
+    org: "CISCO Networking Academy",
+    year: "2026",
+    image: "/certs/aiFundamentals.jpg",
+    link: "https://www.credly.com/badges/4c1f7436-1191-4430-b7a9-ff67b4b49ed8/public_url",
+    status: "completed",
+  },
   {
     name: "Prompt like an Engineer",
     org: "CISCO Networking Academy",
@@ -44,14 +52,6 @@ const certificates = [
     status: "pursuing",
   },
   {
-    name: "AI Fundamentals: Foundations for Understanding AI",
-    org: "CISCO Networking Academy",
-    year: "2026",
-    image: "/certs/aiFundamentals.jpg",
-    link: "https://www.credly.com/badges/4c1f7436-1191-4430-b7a9-ff67b4b49ed8/public_url",
-    status: "completed",
-  },
-    {
     name: "Introduction to AI",
     org: "Coursera - Google",
     year: "2026",
