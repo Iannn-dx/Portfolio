@@ -45,9 +45,9 @@ const certificates = [
   },
   {
     name: "AI Fundamentals",
-    org: "Coursera - Google",
+    org: "CISCO Networking Academy",
     year: "2026",
-    image: "/certs/AIfundamentals.jpg",
+    image: "/certs/aiFundamentals.jpg",
     link: "#",
     status: "pursuing",
   },
