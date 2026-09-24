@@ -32,8 +32,8 @@ const certificates = [
     org: "CISCO Networking Academy",
     year: "2026",
     image: "/certs/prompt.jpg",
-    link: "#",
-    status: "ongoing",
+    link: "https://www.credly.com/badges/eec3bd8c-5fb1-4510-a145-45443870838f/public_url",
+    status: "completed",
   },
   {
     name: "Introduction to Modern AI",
